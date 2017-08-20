@@ -50,6 +50,10 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.0.6)
+    carrierwave (1.1.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     concurrent-ruby (1.0.5)
     database_cleaner (1.6.1)
     devise (4.3.0)
@@ -234,6 +238,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 3.3.5)
   byebug
+  carrierwave (~> 1.0)
   database_cleaner
   devise
   factory_girl_rails (~> 4.0)
