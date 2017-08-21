@@ -5774,8 +5774,8 @@ button.close {
   }
 }
 /*
- * 	Core Owl Carousel CSS File
- *	v1.3.2
+ *  Core Owl Carousel CSS File
+ *  v1.3.2
  */
 /* clearfix */
 .owl-carousel .owl-wrapper:after {
@@ -5840,8 +5840,8 @@ button.close {
   -ms-transform: translate3d(0, 0, 0);
 }
 /*
-* 	Owl Carousel Owl Demo Theme
-*	v1.3.2
+*   Owl Carousel Owl Demo Theme
+* v1.3.2
 */
 .owl-theme .owl-controls {
   margin-top: 10px;
@@ -6788,12 +6788,12 @@ input[type="password"]:focus + label {
   text-transform: uppercase;
   /*
 &> .open {
-			.cart-btn, .cart-btn:hover {
-				background: #083347 !important;
-				color: #fff !important;
-				border-color: #03151e !important;
-			}
-		}
+      .cart-btn, .cart-btn:hover {
+        background: #083347 !important;
+        color: #fff !important;
+        border-color: #03151e !important;
+      }
+    }
 */
 }
 .navbar-default .navbar-nav > li .btn-default {
@@ -7383,8 +7383,8 @@ input[type="password"]:focus + label {
   .navbar-default #main-nav .dropdown {
     /*
 &:hover .dropdown-menu {
-				display: block;
-			}
+        display: block;
+      }
 */
   }
   .navbar-default #main-nav .dropdown .dropdown-menu {
@@ -7710,4 +7710,13 @@ input[type="password"]:focus + label {
   height: 45px;
   padding-top: 13px;
   text-align: center;
+}
+
+.padding0{
+  padding:0;
+}
+
+#page-footer{
+  position:absolute;
+  bottom: 0;
 }
