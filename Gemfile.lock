@@ -45,6 +45,9 @@ GEM
       execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bootstrap-glyphicons (0.0.1)
+      railties (>= 3.0)
+      sass (>= 3.2)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -240,6 +243,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-glyphicons
   bootstrap-sass (~> 3.3.5)
   byebug
   carrierwave (~> 1.0)
