@@ -94,10 +94,10 @@
                         </li>
                      </ul>
                   </div>
-                  <form id="search-form" class="navbar-form" role="form" method="get" action="search.html">
-                     <div class="input-group">
-                        <input type="text" class="search-form form-control" name="query" id="query" placeholder="Type your search term and press Enter" autocomplete="off" value="">
-                        <span class="input-group-btn">
+                  <form id="search-form" class="navbar-form" role="form" method="get" action=<%=search_products_path%>>
+                     <div class="input-group" style="width:100%">
+                        <input type="text" class="search-form form-control" name="keyward" id="query" placeholder="Type your search term and press Enter" autocomplete="off" value=<%=@search%>>
+                        <span class="input-group-btn" style="width: 10px;">
                         <button class="btn search-btn toggle hidden-xs hidden-sm" type="button"><i class="fa fa-search"></i></button>
                         <button class="btn search-btn hidden-md hidden-lg" type="submit"><i class="fa fa-search"></i></button>
                         </span>

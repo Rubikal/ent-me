@@ -1,0 +1,23 @@
+<div id="banner" class="jumbotron row">
+  <h1>Search Results</h1>
+  <p class="found"> <%=@products.count%> Products Found</p>
+</div>
+<section id="shop" class="page-section row">
+  <div class="col-xs-12 col-sm-12">
+    <div class="product-grid">
+      <div id="" class="row" style="position: relative; height: 0px;">
+        <div class="col-xs-12">
+          <% @products.each do |product| %>
+            <%= render 'product', product: product%>
+          <% end %>
+          <%if @products.count == 0%>
+            <h2 class="empty no-items">Sorry, there are no products matching your request.</h2>
+          <%end%>
+
+        </div>
+      </div>
+    </div>
+    <div class="pagination-holder">
+    </div>
+  </div>
+</section>
