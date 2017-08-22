@@ -17,6 +17,6 @@ class Product < ApplicationRecord
   scope :by_category, -> (category) { where(category: category) }
 
   def image
-    "watch-sample.png"
+    ["watch-sample.png", "headset-sample.png"].shuffle.first
   end
 end

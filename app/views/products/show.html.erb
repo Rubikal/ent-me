@@ -1,0 +1,117 @@
+<div itemscope="" itemtype="http://schema.org/Product">
+  <div id="banner" class="jumbotron row">
+    <h1 itemprop="name"><%=@product.title%></h1>
+    <p itemprop="description"><%=@product.description%></p>
+  </div>
+  <section id="single-product" class="page-section">
+
+    <ol class="breadcrumb">
+      <li class="hidden-xs"><a href=<%=root_path%> >Home</a></li>
+      <li class="hidden-xs"><a href=<%=type_products_path(nav_name_for(@product))%> > <%=nav_name_for(@product)%> </a></li>
+      <li class="active"><a href="javascript:;" class="no-click"> <%=@product.title%> </a></li>
+    </ol>
+
+    <form class="custom" onsubmit="return false" method="post" action="javascript:;">
+      <div class="row">
+        <div id="product-images">
+          <div class="col-xs-12 col-sm-6">
+            <img src= <%=asset_path(@product.image) %> class="zoomImg" >
+          </div>
+        </div>
+
+        <div id="product-page">
+          <div class="col-sm-6">
+            <div class="price">
+              <h2 itemprop="price">
+                $<%=@product.price%>
+              </h2>
+            </div>
+
+            <div class="excerpt" itemprop="description">
+              <p><%=@product.description%></p>
+            </div>
+
+            <input type="hidden" name="productId" value="6">
+            <div class="add-cart-holder form-group">
+              <div class="quantity-selector">
+                <button class="quantity-btn minus btn btn-lg btn-default"><i class="fa fa-minus"></i></button>
+                <input class="form-control quantity" type="text" value="1" name="quantity">
+                <button class="quantity-btn plus btn btn-lg btn-default"><i class="fa fa-plus"></i></button>
+              </div>
+              <a class="btn btn-lg btn-danger btn-add-cart" href="#">Add to Cart <i class="fa fa-shopping-cart"></i></a>
+            </div>
+
+            <div id="sharrre" class="social-buttons">
+              <h6 class="share-title">share with your friends</h6>
+              <ul class="inline list-inline square-icons">
+                <li class="facebook sharrre"><a href="#" rel="tooltip" title="" data-original-title="Facebook: 0"><i class="fa fa-facebook"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- review -->
+    <div  class="review-box row">
+      <div href="#" class="">
+        <div class="container">
+          <div class="col-md-9 col-sm-9 col-xs-9">
+            <textarea class="form-control" rows="2" id="comment"></textarea>
+          </div>
+          <div class="col-md-3 col-sm-3 col-xs-3 text-center">
+            <button type="button" class="btn btn-primary btn-lg btn-block">Add Review!</button>
+            <div class="stars">
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="review-header text-center" >REVIEWS</h1>
+
+      <div class="list-group">
+        <!-- item  -->
+        <%@reviews.each do |review|%>
+          <a href="#" class="list-group-item">
+            <div class="container">
+              <div class="media col-md-2 col-sm-2 col-xs-2">
+                <figure >
+                <p class="text-bold"><i class="color-review fa fa-user" aria-hidden="true"></i> <%=review.user.name%> </p>
+                <p class="text-bold"><i class="color-review fa fa-clock-o" aria-hidden="true"></i> <%=review_time(review)%> </p>
+                <p class="text-bold"><i  class="color-review fa fa-calendar-o" aria-hidden="true"></i> <%=review_date(review)%></p>
+                </figure>
+              </div>
+              <div class="col-md-7 col-sm-7 col-xs-7">
+                <p class="list-group-item-text"> <%=review.message%> </p>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-3 text-center">
+                <div class="stars">
+                  <% (1..review.rating).each do |r| %>
+                    <i  class="color-review fa fa-star" aria-hidden="true"></i>
+                  <% end %>
+                  <% (review.rating+1..5).each do |r| %>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                  <% end %>
+
+                  <p> Average <%=@reviews_rating%> <small> / </small> 5 </p>
+                </div>
+              </div>
+            </div>
+          </a>
+        <%end%>
+
+        <% if @reviews.count == 0 %>
+          <div class="no-reviews"> No reivews yet, be ths first to review this product. </div>
+        <%end%>
+
+      </div>
+    </div>
+    <!-- end review  -->
+
+  </section>
+</div>

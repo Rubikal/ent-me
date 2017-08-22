@@ -3,10 +3,10 @@ Rails.application.routes.draw do
 
   root to: "products#home"
 
-  resources :products, only: [:index] do
+  resources :products, only: [:index, :show] do
     collection do
       get 'home'
-      get ':type', action: :index, constraints: {type: /#{Product::TYPES.map(&:pluralize).join('|')}/}
+      get ':type', action: :index, constraints: {type: /#{Product::TYPES.map(&:pluralize).join('|')}/}, as: :type
     end
   end
   resources :products, path: '/product', only: [:show]

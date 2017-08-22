@@ -7085,7 +7085,7 @@ input[type="password"]:focus + label {
   clear: both;
 }
 .quantity-selector .form-control {
-  width: 50px;
+  width: 80px;
   display: inline-block;
   box-shadow: none;
   height: 45px;
@@ -7691,6 +7691,40 @@ input[type="password"]:focus + label {
 }
 /*# sourceMappingURL=main.css.map */
 
+/*custom CSS*/
+.review-box{
+  margin-top:40px;
+}
+.review-header{
+  margin-left: 45px;
+  text-align:left;
+}
+.text-bold{
+  font-weight: bold;
+}
+.color-review{
+color:#0c4d6c;
+}
+.text-bold:hover{
+  color:#0c4d6c;
+
+}
+
+
+a.list-group-item {
+  height:auto;
+  min-height:150px;
+}
+a.list-group-item.active small {
+  color:#fff;
+}
+.stars {
+  margin:20px auto 1px;
+}
+
+
+
+
 .btn-fb{
   padding-left: 44px;
 }
@@ -7720,3 +7754,24 @@ input[type="password"]:focus + label {
 /*  position:absolute;
   bottom: 0;*/
 }
+
+.products-pos{
+  position: absolute; left: 317px; top: 0px;
+}
+
+.no-products{
+  position: relative;text-align: center;margin-top: 100px;font-size: 20px;color: #0c4d6c;
+}
+
+.no-reviews{
+  text-align: center;margin-top: 30px;font-size: 20px;color: #0c4d6c;
+}
+
+.no-click{
+  cursor: text;
+}
+
+.no-click:hover{
+  text-decoration: none;
+}
+
