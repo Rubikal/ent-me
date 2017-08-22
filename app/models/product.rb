@@ -16,6 +16,7 @@ class Product < ApplicationRecord
 
   # Scopes
   scope :featured, ->{ where(featured: true) }
+  scope :search, ->(keyward){ where("title ilike ?", "%#{keyward}%") }
   scope :by_category, -> (category) { where(category: category) }
 
   def image_url

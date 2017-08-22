@@ -26,6 +26,11 @@ class ProductsController < ApplicationController
     @reviews_rating = @reviews.average_rating
   end
 
+  def search
+    @search = params[:keyward]
+    @products = Product.search(@search)
+  end
+
   protected
   def load_class
     @klass = params[:type].singularize.classify.constantize rescue Product
