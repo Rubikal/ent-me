@@ -18,7 +18,4 @@ class Product < ApplicationRecord
   scope :featured, ->{ where(featured: true) }
   scope :by_category, -> (category) { where(category: category) }
 
-  def image
-    ["watch-sample.png", "headset-sample.png"].shuffle.first
-  end
 end
