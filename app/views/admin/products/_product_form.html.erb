@@ -1,0 +1,7 @@
+<% if @product.is_a? Film %>
+  <%= render 'film_form' %>
+<% elsif @product.is_a? Music %>
+  <%= render 'music_form' %>
+<% elsif @product.is_a? Game %>
+  <%= render 'game_form' %>
+<% end %>

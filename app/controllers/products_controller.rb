@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :load_class
+  before_action :load_class
 
   def index
     @products = @klass.page(params[:page])

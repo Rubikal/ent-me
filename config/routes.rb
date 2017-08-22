@@ -9,4 +9,8 @@ Rails.application.routes.draw do
     end
   end
   resources :products, path: '/product', only: [:show]
+
+  namespace :admin do
+    resources :products
+  end
 end

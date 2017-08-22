@@ -1,0 +1,106 @@
+<ul class="nav nav-pills sub-nav">
+  <li>
+    <nav class="vendor-breadcrumb">
+      <ol class="cd-breadcrumb narrow triangle custom-icons">
+        <li class="home"><a href="<%= admin_products_path %>"><i class="fa fa-cubes" aria-hidden="true">&nbsp;</i> Products</a></li>
+        <li class="current"><a href="javascript:;"><%= @product.title.blank? ? "New Music" : @product.title %></a></li>
+      </ol>
+    </nav>
+  </li>
+</ul>
+
+<div class="form-container container">
+  <div class="grid-card">
+    <div class="actions">
+      <ul class="tab-list">
+        <li role="presentation">
+          <a class="tab active" href="javascript:;"><%= @product.title.blank? ? "New Music" : @product.title %></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="form-content">
+    <div class="row">
+      <div class="col-md-12">
+        <% if @product.errors.any? %>
+          <br/>
+          <div class="alert alert-danger">
+            <strong>Please fix the errors below:</strong>
+            <ul>
+            <% @product.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <%= simple_form_for @product, url: admin_products_path(type: :music), html: { id: 'new-product-form', multipart: true, class: ['form-horizontal'] }, wrapper: :grid_form do |f| %>
+          <div class="page-header">
+            <h3>Title and Description</h3>
+          </div>
+          <div class="grid-form">
+            <div class="row">
+              <div class="col-sm-7 field-cell">
+                <%= f.input :title, placeholder: "Music title (ex. Boom Boom)", autofocus: true %>
+              </div>
+              <div class="col-sm-5 field-cell">
+                <%= f.input :category, collection: Music.categories.keys, include_blank: true %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 field-cell area-cell">
+                <%= f.input :description, label: false, input_html: {class: 'tinymce', :rows => 10, :cols => 60} %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 field-cell">
+                <%= f.input :price, placeholder: "Price" %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 field-cell">
+                <%= f.input :format, collection: Music.formats.keys, placeholder: "Format" %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 field-cell">
+                <div class='cart-age-confirm released-at'>
+                  <label class="control-label string optional" for="music_title">Released at</label>
+                  <fieldset>
+                    <span class="month">
+                      <select class="form-control" name="music[released_at][month]"><option value="0">Month</option><option value="1">January</option><option value="2">February</option><option value="3">March</option><option value="4">April</option><option value="5">May</option><option value="6">June</option><option value="7">July</option><option value="8">August</option><option value="9">September</option><option value="10">October</option><option value="11">November</option><option value="12">December</option></select>
+                    </span>
+                    <span class="day">
+                      <input type="number" class="form-control" step="1" min="1" max="31" placeholder="Day" name="music[released_at][day]" />
+                    </span>
+                    <span class="year">
+                      <input type="number" class="form-control" step="1" min="1950" max="2005" placeholder="Year" name="music[released_at][year]" />
+                    </span>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+
+            <div class="page-header">
+              <h3>Cover Image</h3>
+            </div>
+            <div class="grid-form">
+              <div class="row">
+                <div class="col-sm-2 field-cell" style="text-align: center;">
+                  <%= image_tag(@product.image.thumb.url, size: "70x70", alt: "Avatar") %>
+                </div>
+                <div class="col-sm-10 field-cell">
+                  <%= f.file_field :image, accept: "image/jpeg, image/jpg, image/gif, image/png" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= tinymce(:default) %>

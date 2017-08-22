@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  mount_uploader :image, ::ImageUploader
+
   TYPES = %w(music film game)
   # Relations
   has_many :bundle_products

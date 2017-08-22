@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>EntMe Admin</title>
+      <%= csrf_meta_tags %>
+      <%= stylesheet_link_tag    'admin_application', media: 'all' %>
+      <%= javascript_include_tag 'application' %>
+      <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=9t97wiw90jsjehcw07r2e5mz6yt8o6cbrebxrafbbpj5qhi8"></script>
+   </head>
+   <body cz-shortcut-listen="true" class="admin">
+      <main id="page-content" class="wrap container">
+         <!-- Nav bar header -->
+         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+               <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href=<%=root_path%> ><i class="fa fa-cube"></i> Ent-Me Admin</a>
+               </div>
+               <div class="navbar-right navbar-utils">
+                  <ul class="list-unstyled clearfix">
+                    <% if current_user %>
+                       <li class="hidden-xs">
+                          <%=link_to "Sign out", destroy_user_session_path, method: "DELETE", class: "btn"%>
+                       </li>
+                    <% else %>
+                      <% if controller_name != 'sessions' %>
+                       <li class="hidden-xs">
+                          <a href=<%=new_user_session_path%> class="btn"><span>sign in</span></a>
+                       </li>
+                      <%end%>
+
+                      <% if controller_name != 'registrations' %>
+                       <li class="hidden-xs">
+                          <a href=<%=new_user_registration_path%> class="btn"><span>sign up</span></a>
+                       </li>
+                       <% end %>
+                    <% end %>
+
+                  </ul>
+               </div>
+            </div>
+         </nav>
+         <!-- end Nav bar header -->
+         <% if notice %>
+          <p class="notice"><%= notice %></p>
+         <% end %>
+         <% if alert %>
+          <p class="alert"><%= alert %></p>
+         <% end %>
+
+        <%= yield %>
+      </main>
+   </body>
+</html>
