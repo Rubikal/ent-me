@@ -7713,10 +7713,10 @@ input[type="password"]:focus + label {
 }
 
 .padding0{
-  padding:0;
+  /*padding:0;*/
 }
 
 #page-footer{
-  position:absolute;
-  bottom: 0;
+/*  position:absolute;
+  bottom: 0;*/
 }

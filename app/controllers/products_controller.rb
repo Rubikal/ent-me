@@ -1,5 +1,14 @@
 class ProductsController < ApplicationController
-  before_filter :load_class
+  before_action :load_class
+
+  def home
+    @products = Product.featured.take(3)
+    @featured = @products.any?
+
+    unless @featured
+      @products = Product.take(3)
+    end
+  end
 
   def index
     @products = @klass.page(params[:page])

@@ -9,7 +9,14 @@ class Product < ApplicationRecord
     end
   end
 
+  # Validations
+  validates :price, presence: true
+
   # Scopes
   scope :featured, ->{ where(featured: true) }
   scope :by_category, -> (category) { where(category: category) }
+
+  def image
+    "watch-sample.png"
+  end
 end
