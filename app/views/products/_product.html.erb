@@ -1,19 +1,17 @@
-<div class="col-sm-4 product-holder">
-   <form class="custom" onsubmit="return false" method="post" action="https://boxie.lemonstand.com/">
+<div class="col-md-4 product-holder">
+   <form class="custom" onsubmit="return false" method="post">
       <div class="product-item text-center">
-         <a class="product-img" href="details2.html">
-         <img class="img-responsive" src=<%= asset_path(product.image) %> alt="Product Image" style="height:300px">
+         <a class="product-img" href=<%=product_path(product)%> >
+         <img class="img-responsive" src=<%= asset_path(product.image) %> alt="Product Image">
          </a>
          <h3 class="product-title">
-            <a href="https://boxie.lemonstand.com/product/blue-headphones"> <%= product.title %> </a>
+            <a href=<%=product_path(product)%> > <%= product.title %> </a>
          </h3>
          <div class="h4 product-price">
             <span>$<%= product.price %> </span>
          </div>
          <div class="buttons-holder">
-            <a class="btn btn-default btn-quick-view hidden-xs" rel="tooltip" title="" href="details2.html" data-original-title="View details"><i class="fa fa-eye"></i></a>
-            <input type="hidden" name="productId" value="6">
-            <a class="btn btn-danger btn-add-cart" href="details2.html" >Add to Cart</a>
+            <a class="btn btn-danger btn-add-cart" href="javascript:;" >Add to Cart</a>
          </div>
       </div>
    </form>

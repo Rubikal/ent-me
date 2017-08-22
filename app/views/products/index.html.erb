@@ -1,0 +1,34 @@
+<div id="banner" class="jumbotron row">
+   <h1>All <%=@type.capitalize%></h1>
+</div>
+<section id="shop" class="page-section row">
+   <div class="col-xs-12 col-sm-3">
+      <div class="sidebar">
+         <h4>Categories</h4>
+         <ul class="list-unstyled  categories-group ">
+            <%@categories.each do |category|%>
+               <li>
+                  <a href=<%=type_products_path(@type, category: category)%> class=<%="active" if @category == category %>><span class="badge"><%=@products_categories_count[category] || 0 %></span><%=category%></a>
+               </li>
+            <%end%>
+         </ul>
+      </div>
+   </div>
+   <div class="col-xs-12 col-sm-9">
+      <div id="product-list">
+         <div class="product-grid">
+            <div id="" class="row" style="position: relative; height: 372.109px;">
+               <% @products.each do |product| %>
+                  <%= render 'product', product: product%>
+               <% end %>
+               <%if @products.count == 0%>
+                  <div class="no-products"> No products found! </div>
+               <%end%>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="col-xs-12 col-sm-12">
+      <%= paginate @products %>
+   </div>
+</section>
