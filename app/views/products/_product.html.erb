@@ -2,7 +2,7 @@
    <form class="custom" onsubmit="return false" method="post">
       <div class="product-item text-center">
          <a class="product-img" href=<%=product_path(product)%> >
-         <img class="img-responsive" src=<%= asset_path(product.image) %> alt="Product Image">
+         <img class="img-responsive" src=<%= product.image_url %> alt="Product Image">
          </a>
          <h3 class="product-title">
             <a href=<%=product_path(product)%> > <%= product.title %> </a>
