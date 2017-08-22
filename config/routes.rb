@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  match '/about', to: 'home#about', via: :get, as: :about
+
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   root to: "products#home"
