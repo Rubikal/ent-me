@@ -3,7 +3,7 @@ ready = function() {
       e.preventDefault();
       e.stopPropagation();
 
-      var $el = $(this).closest('.quantity-selector').find('.quantity'),
+      var $el = $(this).siblings('.quantity'),
         q = parseInt($el.val())-1;
       if (q >= 1) {
         $el.val(q);
@@ -18,7 +18,7 @@ ready = function() {
       e.preventDefault();
       e.stopPropagation();
 
-      var $el = $(this).closest('.quantity-selector').find('.quantity'),
+      var $el = $(this).siblings('.quantity'),
         q = parseInt($el.val())+1;
       $el.val(q);
 
