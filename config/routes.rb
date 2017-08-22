@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :carts, only: [:index] do
     collection do
+      get :info
       post :add
       post :remove
     end

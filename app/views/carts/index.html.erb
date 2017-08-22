@@ -1,0 +1,32 @@
+<div id="banner" class="jumbotron row">
+  <h1>Shopping Cart</h1>
+</div>
+<section id="cart" class="page-section row">
+  <form class="custom" method="post" action="">
+    <div id="cart-content">
+      <div class="col-xs-12 col-md-9">
+        <div class="items-holder">
+          <div class="cart-labels clearfix hidden-xs">
+            <div class="col-sm-4 col-sm-offset-2 col-lg-5"> Item </div>
+            <div class="col-sm-3 col-lg-2"> Quantity </div>
+            <div class="col-sm-3 col-lg-3"> Item Total </div>
+          </div>
+          <div class="full-cart-items"></div>
+
+        </div>
+        <div id="cart-actions" class="btn-holder clearfix">
+          <a class="btn btn-default btn-continue-shopping pull-left" href=<%=root_path%>><i class="fa fa-arrow-left"></i> Continue Shopping</a>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3">
+        <h3>Order Summary</h3>
+        <p class="h6">Shipping costs and taxes will be evaluated during checkout</p>
+        <ul class="price-list list-group">
+          <li class="list-group-item">Subtotal: <span class="badge js-badge"></span> </li>
+          <li class="list-group-item important">Total: <span class="badge js-badge"> </span></li>
+        </ul>
+        <a class="col-xs-12 btn btn-danger solid btn-lg" href="">Checkout</a>
+      </div>
+    </div>
+  </form>
+</section>

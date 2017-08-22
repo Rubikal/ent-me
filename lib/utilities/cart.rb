@@ -3,13 +3,13 @@ class Cart
     @cart = cart || {}
   end
 
-  def add_product product, count
-    count ||= 1
+  def add_product product, count, set
+    count = count.present? ? count.to_i : 1
 
     if has_item? product
-      cart[product] = item_count(product) + count.to_i
+      cart[product] = set ? count : (item_count(product) + count)
     else
-      cart[product] = count.to_i
+      cart[product] = count
     end
   end
 
