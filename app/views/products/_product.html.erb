@@ -1,1 +1,18 @@
-<%= product.title %>
+<div class="col-md-4 product-holder">
+   <form class="custom" onsubmit="return false" method="post">
+      <div class="product-item text-center">
+         <a class="product-img" href=<%=product_path(product)%> >
+         <img class="img-responsive" src=<%= asset_path(product.image) %> alt="Product Image">
+         </a>
+         <h3 class="product-title">
+            <a href=<%=product_path(product)%> > <%= product.title %> </a>
+         </h3>
+         <div class="h4 product-price">
+            <span>$<%= product.price %> </span>
+         </div>
+         <div class="buttons-holder">
+            <a class="btn btn-danger btn-add-cart" href="javascript:;" >Add to Cart</a>
+         </div>
+      </div>
+   </form>
+</div>

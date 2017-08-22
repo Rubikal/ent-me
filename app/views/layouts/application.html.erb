@@ -82,25 +82,13 @@
                <div class="navbar-collapse collapse">
                   <div class="navbar-left">
                      <ul id="main-nav" class="nav navbar-nav">
-                        <li class="dropdown active">
-                           <a class="dropdown-toggle" data-toggle="dropdown" id="shop-dropdown" href="/">
-                           Shop <b class="caret"></b>
-                           </a>
-                           <ul class="dropdown-menu" role="menu" aria-labelledby="shop-dropdown">
-                              <li role="presentation">
-                                 <a href="shop.html">All Products</a>
-                              </li>
-                              <li role="presentation">
-                                 <a role="menuitem" tabindex="-1" href="shop.html">Headphones</a>
-                              </li>
-                              <li role="presentation">
-                                 <a role="menuitem" tabindex="-1" href="shop.html">Portable Speakers</a>
-                              </li>
-                              <li role="presentation">
-                                 <a role="menuitem" tabindex="-1" href="shop.html">Wearable Tech</a>
-                              </li>
-                           </ul>
-                        </li>
+                        <% Product::TYPES.each do |type| %>
+                          <li class="dropdown <%='active' if @type == type.pluralize%>">
+                             <a href=<%=type_products_path(type.pluralize)%>>
+                              <%=type.pluralize%>
+                             </a>
+                          </li>
+                        <%end%>
                         <li class="visible-xs col-xs-12">
                            <a href="shop.html" class="btn btn-default">Login <i class="fa fa-lock"></i></a>
                         </li>
@@ -131,7 +119,7 @@
          <%= yield %>
 
       </main>
-      <div class="container">
+      <div class="container padding0">
         <footer id="page-footer">
            <div class="container">
               <div class="footer-contact text-center row">
@@ -151,6 +139,7 @@
                  <div class="col-sm-6">
                     <ul class="list-unstyled">
                        <li>&copy; Rubikal! 2017</li>
+                       <li><a href=<%=about_path%>>About</a></li>
                     </ul>
                  </div>
                  <div class="col-sm-6">
