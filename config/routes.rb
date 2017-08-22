@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :carts, only: [:index] do
+    collection do
+      post :add
+      post :remove
+    end
+  end
 
   match '/about', to: 'home#about', via: :get, as: :about
 
