@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :orders, only: :create do
+    collection do
+      get :receipt
+    end
+  end
+
   resources :checkout, only: [:index]
 
   resources :carts, only: [:index] do
