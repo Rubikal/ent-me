@@ -131,7 +131,9 @@ function renderCart(data){
 
 function renderMiniBascket(data){
   $(".js-item-count").text([data.count,  " Items"].join(''));
+  $(".js-total-price").text(["$", data.total ].join(''));
   $(".js-subtotal").text(["Subtotal: $", data.total ].join(''));
+
   $(".cart-items").html("");
   if(data.items.length > 0){
     $(".mini-cart-totals").show();

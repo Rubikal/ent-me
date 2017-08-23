@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  resources :checkout, only: [:index]
+
   resources :carts, only: [:index] do
     collection do
       get :info
