@@ -10,6 +10,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def autocomplete
+    products = Product.search_by_title(params[:term]).with_pg_search_highlight
+    render json: products.map {|p| { id: p.id, title: p.title, image_url: p.image_url, price: p.price } }, status: 200
+  end
+
   def index
     @products = @klass.page(params[:page] || 1).per(6)
     if @category = params[:category]
@@ -24,6 +29,8 @@ class ProductsController < ApplicationController
     @product = Product.find params[:id]
     @reviews = @product.reviews.includes(:user)
     @reviews_rating = @reviews.average_rating
+
+    @review = @product.reviews.new if current_user
   end
 
   def search

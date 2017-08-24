@@ -17,7 +17,8 @@ class OrdersController < ApplicationController
     end
 
     session[:cart] = {}  # Clear shopping cart
-    redirect_to receipt_orders_path
+
+    render json: [], status: 200
   end
 
   def receipt

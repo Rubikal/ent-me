@@ -18,13 +18,17 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # jQuery integration
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 gem 'turbolinks', '~> 5'
 
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'font-awesome-sass'
 gem 'bootstrap-glyphicons'
-gem "react-rails"
+gem 'react-rails'
+
+# Auto complete
+gem 'pg_search'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

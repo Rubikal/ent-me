@@ -1,3 +1,11 @@
+<% content_for :head do %>
+  <meta property="og:url"           content="<%=Rails.configuration.app_domain%><%=product_path(@product)%>" />
+  <meta property="og:type"          content="<%=@product.class%>" />
+  <meta property="og:title"         content="<%=@product.title%>" />
+  <meta property="og:description"   content="<%=@product.description%>" />
+  <meta property="og:image"         content="<%=Rails.configuration.app_domain%><%=@product.image%>" />
+<% end %>
+
 <div itemscope="" itemtype="http://schema.org/Product">
   <div id="banner" class="jumbotron row">
     <h1 itemprop="name"><%=@product.title%></h1>
@@ -26,6 +34,16 @@
                 $<%=@product.price%>
               </h2>
             </div>
+            <%if @product.reviews.count > 0%>
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                  <h6> Users rate this product</h6>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                  <span data-rating=<%=@product.reviews.average_rating%> readonly data-rateyo-rated-fill="#0c4d6c"></span>
+                </div>
+              </div>
+            <%end%>
 
             <div class="excerpt" itemprop="description">
               <p><%=@product.description%></p>
@@ -43,9 +61,16 @@
 
             <div id="sharrre" class="social-buttons">
               <h6 class="share-title">share with your friends</h6>
-              <ul class="inline list-inline square-icons">
-                <li class="facebook sharrre"><a href="#" rel="tooltip" title="" data-original-title="Facebook: 0"><i class="fa fa-facebook"></i></a></li>
-              </ul>
+
+              <div class="fb-share-button"
+                data-href="<%=Rails.configuration.app_domain%><%=product_path(@product)%>"
+                data-layout="button"
+                data-size="small"
+                data-mobile-iframe="true">
+                <a class="fb-xfbml-parse-ignore"
+                    target="_blank"
+                    href="https://www.facebook.com/sharer/sharer.php?u=<%=Rails.configuration.app_domain%><%=product_path(@product)%>&amp;src=sdkpreparse">Share</a>
+              </div>
             </div>
           </div>
         </div>
@@ -54,30 +79,27 @@
 
     <!-- review -->
     <div  class="review-box row">
-      <div href="#" class="">
-        <div class="container">
-          <div class="col-md-9 col-sm-9 col-xs-9">
-            <textarea class="form-control" rows="2" id="comment"></textarea>
-          </div>
-          <div class="col-md-3 col-sm-3 col-xs-3 text-center">
-            <button type="button" class="btn btn-primary btn-lg btn-block">Add Review!</button>
-            <div class="stars">
-              <i class="fa fa-star-o" aria-hidden="true"></i>
-              <i class="fa fa-star-o" aria-hidden="true"></i>
-              <i class="fa fa-star-o" aria-hidden="true"></i>
-              <i class="fa fa-star-o" aria-hidden="true"></i>
-              <i class="fa fa-star-o" aria-hidden="true"></i>
+      <%if current_user%>
+        <%= form_for(@review, url: product_reviews_path(@product), html: { method: :post, role: 'form' }) do |f| %>
+          <div class="container">
+            <div class="col-md-9 col-sm-9 col-xs-9">
+              <%= f.text_area :message, placeholder: "Your review", class: "form-control", rows: 2 %>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3 text-center">
+              <button type="submit" class="btn btn-primary btn-lg btn-block">Add Review!</button>
+              <div class="stars" data-rating="0" data-rateyo-rated-fill="#0c4d6c"></div>
+              <%= f.hidden_field :rating%>
             </div>
           </div>
-        </div>
-      </div>
+        <% end %>
+      <% end %>
 
       <h1 class="review-header text-center" >REVIEWS</h1>
 
       <div class="list-group">
         <!-- item  -->
         <%@reviews.each do |review|%>
-          <a href="#" class="list-group-item">
+          <a href="javascript:;" class="list-group-item">
             <div class="container">
               <div class="media col-md-2 col-sm-2 col-xs-2">
                 <figure >
@@ -90,16 +112,7 @@
                 <p class="list-group-item-text"> <%=review.message%> </p>
               </div>
               <div class="col-md-3 col-sm-3 col-xs-3 text-center">
-                <div class="stars">
-                  <% (1..review.rating).each do |r| %>
-                    <i  class="color-review fa fa-star" aria-hidden="true"></i>
-                  <% end %>
-                  <% (review.rating+1..5).each do |r| %>
-                    <i class="fa fa-star-o" aria-hidden="true"></i>
-                  <% end %>
-
-                  <p> Average <%=@reviews_rating%> <small> / </small> 5 </p>
-                </div>
+                <span data-rating=<%= review.rating %> readonly data-rateyo-rated-fill="#0c4d6c"></span>
               </div>
             </div>
           </a>

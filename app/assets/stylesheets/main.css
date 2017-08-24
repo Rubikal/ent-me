@@ -7774,3 +7774,174 @@ a.list-group-item.active small {
 .navbar-default #search-form .search-btn {
   width: 45px;
 }
+
+/*Auto complete*/
+.ui-widget-content {
+  background: #fff;
+  font-size: .9em;
+  padding: .5em 0;
+  border-color: #ddd;
+  box-shadow: 0 .1em .2em rgba(187, 187, 187, 0.64);
+  line-height: 1.2;
+  max-height: 20em;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.ui-menu-item {
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  padding: .4em .6em .4em 6.2em;
+  position: relative;
+  border: 0;
+  border-left: 5px solid transparent;
+  position: relative;
+  height: 6.5em;
+}
+
+.ui-menu-item:hover {
+  background: #fff;
+  color: #0c4d6c;
+  font-weight: 300;
+  border-left-color: #0c4d6c;
+}
+
+
+.ui-menu-item .img {
+  position: absolute;
+  width: 5em;
+  height: 6em;
+  top: .4em;
+  left: .6em;
+  overflow: hidden;
+}
+
+.ui-menu-item .img img {
+  max-width: 100%;
+}
+
+.ui-menu-item .title {
+  display: block;
+  color: #555;
+}
+
+.ui-menu-item .author {
+  display: block;
+  font-size: .8em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-top: .6em;
+  letter-spacing: 1px;
+}
+
+.ui-menu-item .price {
+  display: block;
+  font-size: .8em;
+  color: #aaa;
+  margin-top: .5em;
+}
+/*custom style news*/
+
+.list-news{
+height: 1000px;
+overflow: hidden;
+position: relative;
+}
+.img-news{
+/*width:300px;*/
+height:150px;
+}
+.box-news{
+ margin: 10px 0px 10px;
+}
+.box-news:hover{
+box-shadow: 5px 6px 5px #888888;
+border-left:4px solid #0c4d6c;
+}
+.txt-news{
+color:#0c4d6c;
+}
+/*scroll style*/
+/*scroll perfect style*/
+
+.ps-container .ps-scrollbar-x-rail {
+   position: absolute;
+   /* please don't change 'position' */
+   bottom: 3px;
+   /* there must be 'bottom' for ps-scrollbar-x-rail */
+   height: 8px;
+   -webkit-border-radius: 4px;
+   -moz-border-radius: 4px;
+   border-radius: 4px;
+   opacity: 0;
+   filter: alpha(opacity=0);
+   -o-transition: background-color .2s linear, opacity .2s linear;
+   -webkit-transition: background-color .2s linear, opacity .2s linear;
+   -moz-transition: background-color .2s linear, opacity .2s linear;
+   transition: background-color .2s linear, opacity .2s linear;
+}
+.ps-container:hover .ps-scrollbar-x-rail,
+.ps-container.hover .ps-scrollbar-x-rail {
+   opacity: 0.6;
+   filter: alpha(opacity=60);
+}
+.ps-container .ps-scrollbar-x-rail.in-scrolling {
+   background-color: #eee;
+   opacity: 0.9;
+   filter: alpha(opacity=90);
+}
+.ps-container .ps-scrollbar-y-rail {
+   position: absolute;
+   /* please don't change 'position' */
+   right: 3px;
+   /* there must be 'right' for ps-scrollbar-y-rail */
+   width: 8px;
+   -webkit-border-radius: 4px;
+   -moz-border-radius: 4px;
+   border-radius: 4px;
+   opacity: 0;
+   filter: alpha(opacity=0);
+   -o-transition: background-color .2s linear, opacity .2s linear;
+   -webkit-transition: background-color .2s linear, opacity .2s linear;
+   -moz-transition: background-color .2s linear, opacity .2s linear;
+   transition: background-color .2s linear, opacity .2s linear;
+}
+.ps-container:hover .ps-scrollbar-y-rail,
+.ps-container.hover .ps-scrollbar-y-rail {
+   opacity: 0.6;
+   filter: alpha(opacity=60);
+}
+.ps-container .ps-scrollbar-y-rail:hover,
+.ps-container .ps-scrollbar-y-rail.hover {
+   background-color: #eee;
+   opacity: 0.9;
+   filter: alpha(opacity=90);
+}
+.ps-container .ps-scrollbar-y-rail.in-scrolling {
+   background-color: #eee;
+   opacity: 0.9;
+   filter: alpha(opacity=90);
+}
+.ps-container .ps-scrollbar-x {
+   position: absolute;
+   /* please don't change 'position' */
+}
+.ps-container.ie6 .ps-scrollbar-x {
+   font-size: 0;
+   /* fixed scrollbar height in xp sp3 ie6 */
+}
+.ps-container .ps-scrollbar-y {
+   position: absolute;
+   /* please don't change 'position' */
+   right: 0;
+   /* there must be 'right' for ps-scrollbar-y */
+   width: 8px;
+   background-color: #aaa;
+   -webkit-border-radius: 4px;
+   -moz-border-radius: 4px;
+   border-radius: 4px;
+   -o-transition: background-color .2s linear;
+   -webkit-transition: background-color.2s linear;
+   -moz-transition: background-color .2s linear;
+   transition: background-color .2s linear;
+   height: 100px !important;
+}

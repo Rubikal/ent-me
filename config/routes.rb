@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   namespace :api do
     resources :products do
       collection do
@@ -7,6 +8,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :news, only: :index
 
   resources :orders, only: :create do
     collection do
@@ -34,10 +37,12 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show] do
     collection do
+      get 'autocomplete'
       get 'home'
       get 'search'
       get ':type', action: :index, constraints: {type: /#{Product::TYPES.map(&:pluralize).join('|')}/}, as: :type
     end
+    resources :reviews, only: :create
   end
   resources :products, path: '/product', only: [:show]
 

@@ -1,14 +1,26 @@
-(function($){
+(function(){
   $(document).ready(function() {
+    $('.scroll-perfect').perfectScrollbar();
+
     $("[data-rating]").each(function(){
       var rating = parseFloat($(this).data('rating'));
-      if (rating > 0) {
-        $(this).rateYo({
-          rating: rating,
-          starWidth: '13px',
-          readOnly: $(this).attr('readonly')
-        });
+      $(this).rateYo({
+        fullStar: 1,
+        rating: rating,
+        starWidth: '13px',
+        readOnly: $(this).attr('readonly'),
+       onChange: function (rating, rateYoInstance) {
+          $(this).next().val(rating);
+        }
+      });
+    });
+
+    $("#new_review").on('submit', function(){
+      if($("[name='review[rating]']").val() === ""){
+        alert("Rating required");
+        return false;
       }
+      return true;
     });
 
     $(document).on('click', '.quantity-selector .minus', function(e) {

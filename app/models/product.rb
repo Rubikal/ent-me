@@ -1,5 +1,13 @@
 class Product < ApplicationRecord
+  include PgSearch
+
   mount_uploader :image, ::ImageUploader
+  pg_search_scope :search_by_title, against: [:title],
+    using: {
+      tsearch: {
+        prefix: true
+      }
+    }
 
   TYPES = %w(music film game)
   # Relations
