@@ -1,0 +1,22 @@
+<div id="banner" class="jumbotron row">
+   <h1>News Feed</h1>
+</div>
+<section id="shop" class="page-section row">
+   <div class="col-xs-12 col-sm-12">
+      <div id="product-list">
+         <div class="product-grid">
+            <div id="" class="row" style="position: relative; height: 372.109px;">
+               <% @news.each do |news| %>
+                  <%= render 'news', news: news%>
+               <% end %>
+               <%if @news.count == 0%>
+                  <h2 class="no-items"> No news found! </h2>
+               <%end%>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="col-xs-12 col-sm-12">
+      <%= paginate @news %>
+   </div>
+</section>

@@ -75,6 +75,12 @@
                              </a>
                           </li>
                         <%end%>
+
+                        <li class="dropdown <%='active' if controller_name == 'news'%>" style="margin-left: 45px;">
+                          <a href=<%=news_index_path%>>
+                            News
+                          </a>
+                        </li>
                         <li class="visible-xs col-xs-12">
                            <a href="shop.html" class="btn btn-default">Login <i class="fa fa-lock"></i></a>
                         </li>

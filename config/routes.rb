@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :news, only: :index
+
   resources :orders, only: :create do
     collection do
       get :receipt

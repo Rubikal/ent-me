@@ -9,7 +9,6 @@ class Product < ApplicationRecord
       }
     }
 
-
   TYPES = %w(music film game)
   # Relations
   has_many :bundle_products
