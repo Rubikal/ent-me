@@ -1,5 +1,4 @@
-class Admin::NewsController < ApplicationController
-  layout 'admin_application'
+class Admin::NewsController < Admin::AdminController
 
   def index
     @news = News.page(params[:page])

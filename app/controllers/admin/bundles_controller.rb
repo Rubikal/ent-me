@@ -1,6 +1,4 @@
-class Admin::BundlesController < ApplicationController
-  layout 'admin_application'
-
+class Admin::BundlesController < Admin::AdminController
   def index
     @bundles = Bundle.page(params[:page])
   end

@@ -1,5 +1,4 @@
-class Admin::ReviewsController < ApplicationController
-  layout 'admin_application'
+class Admin::ReviewsController < Admin::AdminController
 
   def index
     @product = Product.find(params[:product_id])

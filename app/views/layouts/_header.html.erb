@@ -37,12 +37,12 @@
           <li class="login-info">
             <div class="login-details">
               Logged in as
-              <%= link_to current_admin.name, "javascript:;" %>
+              <%= link_to current_user.name, "javascript:;" %>
               (admin)
             </div>
           </li>
           <li class="logout">
-            <%= link_to logout_path, method: :delete do %>
+            <%= link_to destroy_user_session_path, method: :delete do %>
               <i class="fa fa-power-off" aria-hidden="true">&nbsp;</i>
               Logout
             <% end %>

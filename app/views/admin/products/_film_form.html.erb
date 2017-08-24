@@ -38,7 +38,7 @@
             </ul>
           </div>
         <% end %>
-        <%= simple_form_for @product, url: admin_products_path(type: :film), html: { id: 'new-product-form', multipart: true, class: ['form-horizontal'] }, wrapper: :grid_form do |f| %>
+        <%= simple_form_for @product, url: @product.persisted? ? admin_product_path(@product, type: :film) : admin_products_path(type: :film), html: { id: 'new-product-form', multipart: true, class: ['form-horizontal'] }, wrapper: :grid_form do |f| %>
           <div class="page-header">
             <h3>Title and Description</h3>
           </div>

@@ -1,5 +1,4 @@
-class Admin::ProductsController < ApplicationController
-  layout 'admin_application'
+class Admin::ProductsController < Admin::AdminController
   before_action :constrain_type
   before_action :require_type, only: [:new, :create]
   before_action :load_class, only: [:index, :new, :create]
@@ -25,6 +24,15 @@ class Admin::ProductsController < ApplicationController
       redirect_to admin_products_path
     else
       render :new
+    end
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update_attributes(product_params)
+      redirect_to admin_product_path(@product)
+    else
+      render :show
     end
   end
 

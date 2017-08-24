@@ -1,5 +1,4 @@
-class Admin::OrdersController < ApplicationController
-  layout 'admin_application'
+class Admin::OrdersController < Admin::AdminController
 
   def index
     @orders = Order.page(params[:page])
