@@ -21,3 +21,4 @@
 //= require main
 //= require jquery-ui/widgets/autocomplete
 //= require autocomplete
+//= require facebook_share

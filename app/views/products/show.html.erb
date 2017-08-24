@@ -1,3 +1,11 @@
+<% content_for :head do %>
+  <meta property="og:url"           content="<%=Rails.configuration.app_domain%><%=product_path(@product)%>" />
+  <meta property="og:type"          content="<%=@product.class%>" />
+  <meta property="og:title"         content="<%=@product.title%>" />
+  <meta property="og:description"   content="<%=@product.description%>" />
+  <meta property="og:image"         content="<%=Rails.configuration.app_domain%><%=@product.image%>" />
+<% end %>
+
 <div itemscope="" itemtype="http://schema.org/Product">
   <div id="banner" class="jumbotron row">
     <h1 itemprop="name"><%=@product.title%></h1>
@@ -53,9 +61,16 @@
 
             <div id="sharrre" class="social-buttons">
               <h6 class="share-title">share with your friends</h6>
-              <ul class="inline list-inline square-icons">
-                <li class="facebook sharrre"><a href="#" rel="tooltip" title="" data-original-title="Facebook: 0"><i class="fa fa-facebook"></i></a></li>
-              </ul>
+
+              <div class="fb-share-button"
+                data-href="<%=Rails.configuration.app_domain%><%=product_path(@product)%>"
+                data-layout="button"
+                data-size="small"
+                data-mobile-iframe="true">
+                <a class="fb-xfbml-parse-ignore"
+                    target="_blank"
+                    href="https://www.facebook.com/sharer/sharer.php?u=<%=Rails.configuration.app_domain%><%=product_path(@product)%>&amp;src=sdkpreparse">Share</a>
+              </div>
             </div>
           </div>
         </div>
