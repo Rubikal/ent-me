@@ -4,16 +4,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap";
+@import "ladda-themeless.min";
 @import "navbar-fixed-side";
 @import "jquery.rateyo.min";
 
-
-.container-fluid > .row:first-child {
-  margin-top: 65px;
+input:focus{
+  outline: none;
 }
 
 body.admin{
   background: #ebeef0;
+  margin-top: 65px;
 }
 
 small.info{
@@ -1033,4 +1034,82 @@ $grid-form-sm-margin: 20px;
     width: 25%;
     max-width: 100px;
   }
+}
+
+.overlay-button{
+  position: absolute;
+  right: 1px;
+  top: 50%;
+  border-color: #efefef;
+  border-radius: 0;
+  z-index: 1;
+  &:hover{
+    background-color: #f1f1f1;
+    border-color: #cecece;
+  }
+}
+
+.ui-widget-content {
+  background: #fff;
+  font-size: .9em;
+  padding: .5em 0;
+  border-color: #ddd;
+  box-shadow: 0 .1em .2em rgba(187, 187, 187, 0.64);
+  line-height: 1.2;
+  max-height: 20em;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.ui-menu-item {
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  padding: .4em .6em .4em 6.2em;
+  position: relative;
+  border: 0;
+  border-left: 5px solid transparent;
+  position: relative;
+  height: 6.5em;
+  background: #fff;
+  color: #0c4d6c;
+  font-weight: 300;
+  border-left-color: #0c4d6c;
+
+  .btn{
+    padding: 2px 6px;
+    margin-left: 5px;
+  }
+}
+
+.ui-menu-item .img {
+  position: absolute;
+  width: 5em;
+  height: 6em;
+  top: .4em;
+  left: .6em;
+  overflow: hidden;
+}
+
+.ui-menu-item .img img {
+  max-width: 100%;
+}
+
+.ui-menu-item .title {
+  display: block;
+  color: #555;
+}
+
+.ui-menu-item .author {
+  display: block;
+  font-size: .8em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-top: .6em;
+  letter-spacing: 1px;
+}
+
+.ui-menu-item .price {
+  display: block;
+  font-size: .8em;
+  color: #aaa;
+  margin-top: .5em;
 }

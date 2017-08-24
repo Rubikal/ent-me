@@ -22,4 +22,15 @@ class Product < ApplicationRecord
   def image_url
     image.url if image
   end
+
+  def as_json(options = nil)
+    {
+      id: self.id,
+      type: self.type,
+      title: self.title,
+      price: self.price,
+      image_url: self.image.thumb.url,
+      reviews_average: 3
+    }
+  end
 end

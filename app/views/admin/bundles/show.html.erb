@@ -1,0 +1,31 @@
+<ul class="nav nav-pills sub-nav">
+  <li>
+    <nav class="vendor-breadcrumb">
+      <ol class="cd-breadcrumb narrow triangle custom-icons">
+        <li class="home"><a href="<%= admin_bundles_path %>"><i class="fa fa-cubes" aria-hidden="true">&nbsp;</i> Bundles</a></li>
+        <li class="current"><a href="javascript:;"><%= @bundle.title %></a></li>
+      </ol>
+    </nav>
+  </li>
+</ul>
+
+<div class="form-container container">
+  <div class="grid-card">
+    <div class="actions">
+      <ul class="tab-list">
+        <li role="presentation">
+          <a class="tab active" href="javascript:;"><%= @bundle.title %></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="form-content">
+    <div class="row">
+      <div class="col-md-12">
+        <%= react_component("BundleForm", {bundle: @bundle}) %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= tinymce(:default) %>

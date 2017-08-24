@@ -1,0 +1,72 @@
+<ul class="nav nav-pills sub-nav">
+  <li>
+    <nav class="vendor-breadcrumb">
+      <ol class="cd-breadcrumb narrow triangle custom-icons">
+        <li class="home"><a href="<%= admin_bundles_path %>"><i class="fa fa-cubes" aria-hidden="true">&nbsp;</i> Bundles</a></li>
+      </ol>
+    </nav>
+  </li>
+</ul>
+
+<div>
+  <div class="grid-container container">
+    <div class="grid-card">
+      <div class="actions">
+        <ul class="tab-list">
+          <li role="presentation">
+            <a class="tab active" href="/admin/bundles">All Bundles</a>
+          </li>
+        </ul>
+      </div>
+      <div class="grid-content">
+        <% if @bundles.count == 0 %>
+          <div class="row">
+            <div class="col-md-offset-4 col-md-4 empty-placeholder">
+              There are no bundles in shop.
+            </div>
+          </div>
+        <% else %>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th></th>
+                <th class="avatar-head"></th>
+                <th></th>
+                <th>Discount</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @bundles.each do |bundle| %>
+                <tr>
+                  <td></td>
+                  <td scope="row">
+                    <%= link_to admin_bundle_path(bundle), class: 'avatar' do %>
+                      <!-- Product thumb -->
+                      <%= image_tag(bundle.image.thumb.url, size: "60x60", alt: "Avatar") %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= link_to admin_bundle_path(bundle) do %>
+                      <%= bundle.title %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= bundle.discount_percentage %>%
+                  </td>
+                  <td>
+                    <%= link_to admin_bundle_path(bundle), method: :delete, class: 'danger', data: {confirm: 'Are you sure you want to delete bundle?'} do %>
+                      <i class="fa fa-trash"></i>
+                      Remove
+                    <% end %>
+                  </td>
+                  <td></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

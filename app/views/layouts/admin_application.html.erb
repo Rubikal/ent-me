@@ -25,11 +25,16 @@
                 </div>
                 <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                   <ul class="nav navbar-nav">
-                    <li class="<%= 'active' if controller?('admin/sells') %>">
+                    <li class="<%= 'active' if controller?('admin/orders') %>">
                       <a href="/admin/orders"><i class="fa fa-shopping-bag" aria-hidden="true">&nbsp;</i> Orders</a>
                     </li>
-                    <li class="<%= 'active' if controller?('admin/collections') %>">
+                    <li class="<%= 'active' if controller?('admin/bundles') %>">
                       <a href="/admin/bundles"><i class="fa fa-tags" aria-hidden="true">&nbsp;</i> Bundles</a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a href="<%= new_admin_bundle_path() %>"><i class="fa fa-plus" aria-hidden="true">&nbsp;</i> New Bundle</a>
+                        </li>
+                      </ul>
                     </li>
                     <li class="<%= 'active' if controller?('admin/products') %>">
                       <a href="/admin/products"><i class="fa fa-cubes" aria-hidden="true">&nbsp;</i> Products</a>

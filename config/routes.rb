@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  namespace :api do
+    resources :products do
+      collection do
+        get :search
+      end
+    end
+  end
+
   resources :orders, only: :create do
     collection do
       get :receipt
@@ -22,6 +30,8 @@ Rails.application.routes.draw do
 
   root to: "products#home"
 
+  get '/admin', to: 'admin/products#index'
+
   resources :products, only: [:index, :show] do
     collection do
       get 'home'
@@ -36,5 +46,6 @@ Rails.application.routes.draw do
       resources :reviews
     end
     resources :orders
+    resources :bundles
   end
 end

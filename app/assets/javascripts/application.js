@@ -15,6 +15,9 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery.rateyo.min
+//= require spin.min
+//= require ladda.min
+//= require lodash.min
 //= require react
 //= require react_ujs
 //= require components
