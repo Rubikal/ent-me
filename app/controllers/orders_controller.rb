@@ -4,6 +4,8 @@ class OrdersController < ApplicationController
   def create
     data = cart.data
 
+    order = nil
+
     ActiveRecord::Base.transaction do
       order = current_user.orders.create!(order_params.merge({ total_price: data[:total] }))
 
@@ -15,6 +17,9 @@ class OrdersController < ApplicationController
         order.line_items.create!(product_id: item[:id], quantity: item[:count])
       end
     end
+
+    # Send email with receipt to user
+    UserMailer.receipt_summary(order).deliver_now if order && order.persisted?
 
     session[:cart] = {}  # Clear shopping cart
 

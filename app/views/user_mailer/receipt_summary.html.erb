@@ -1,0 +1,81 @@
+<div>
+  <h1>Your Receipt</h1>
+  <p>Please keep this information for your records.</p>
+</div>
+<section>
+  <div>
+    <div>
+      <div>
+        <div>
+          Item
+        </div>
+        <div>
+          Quantity
+        </div>
+        <div>
+          Discount
+        </div>
+        <div>
+          Item Total
+        </div>
+      </div>
+      <% @order.line_items.each do |line_item|%>
+        <div>
+          <div>
+            <div>
+              <img src="<%=Rails.configuration.app_domain%><%=line_item.product.image_url%>" >
+            </div>
+          </div>
+          <div>
+            <div>
+              <a href="javascript:;"><%=line_item.product.title%></a>
+              <small>
+              $<%=line_item.product.price%>
+              </small>
+            </div>
+          </div>
+          <div>
+            <div>
+              <%=line_item.quantity%>
+            </div>
+          </div>
+          <div>
+            <div>
+              $0.00
+            </div>
+          </div>
+          <div>
+            <div>
+              $<%=line_item.product.price%>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div>
+    <table>
+      <tbody>
+        <tr>
+          <td>Order number:</td>
+          <td>#<%=@order.id%></td>
+        </tr>
+        <tr>
+          <td>Shipping method:</td>
+          <td><%=@order.shipping_method%></td>
+        </tr>
+        <tr>
+          <td>Order Date:</td>
+          <td><%=@order.created_at.strftime("%b #{@order.created_at.day.ordinalize}, %Y")%> </td>
+        </tr>
+      </tbody>
+    </table>
+    <ul>
+      <li><strong>Discount applied:</strong> <i>$0.00</i></li>
+      <li><strong>Subtotal:</strong> <i> $<%=@order.total_price%></i></li>
+      <li><strong>Sales Tax:</strong> <i>$0.00</i></li>
+      <li><strong>Shipping:</strong> <i>$<%=@order.shipping_cost%></i></li>
+      <li><strong>Total:</strong>  <i><%=@order.total_price + @order.shipping_cost%></i></li>
+    </ul>
+  </div>
+</section>
