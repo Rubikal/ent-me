@@ -113,7 +113,7 @@
     // Load cart data
     loadCart()
   });
-}());
+})(jQuery);
 
 function loadCart(){
   $.ajax({

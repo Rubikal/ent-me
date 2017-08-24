@@ -1,0 +1,58 @@
+<nav class="navbar navbar-default navbar-fixed-top top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <i class="fa fa-cube" aria-hidden="true"></i>
+        <span>Ent-Me</span>
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="<%= 'active' if controller?('products', 'sells') %>">
+          <%= link_to admin_products_path do %>
+            <i class="fa fa-cubes" aria-hidden="true">&nbsp;</i>
+            Products
+          <% end %>
+        </li>
+        <li class="<%= 'active' if controller?('orders') %>">
+          <%= link_to admin_orders_path do %>
+            <i class="fa fa-cart-plus" aria-hidden="true">&nbsp;</i>
+            Orders
+          <% end %>
+        </li>
+        <div class="clearfix"></div>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? && current_user.admin? %>
+          <li class="login-info">
+            <div class="login-details">
+              Logged in as
+              <%= link_to current_admin.name, "javascript:;" %>
+              (admin)
+            </div>
+          </li>
+          <li class="logout">
+            <%= link_to logout_path, method: :delete do %>
+              <i class="fa fa-power-off" aria-hidden="true">&nbsp;</i>
+              Logout
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Admin Login", "#"%>
+          </li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

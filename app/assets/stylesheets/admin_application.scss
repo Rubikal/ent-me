@@ -4,7 +4,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap";
+@import "navbar-fixed-side";
 @import "jquery.rateyo.min";
+
+
+.container-fluid > .row:first-child {
+  margin-top: 65px;
+}
 
 body.admin{
   background: #ebeef0;
