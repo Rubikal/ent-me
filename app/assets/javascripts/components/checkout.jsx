@@ -122,7 +122,6 @@ class Checkout extends React.Component {
     }
     if(valid){
       this.state.thirdStepValid = true;
-      alert("Done!");
       this.saveForm();
     }else{
       alert("All fields are required!");
@@ -132,7 +131,24 @@ class Checkout extends React.Component {
   }
 
   saveForm(){
+    order = { billing_information: this.state.billingInfo,
+              shipping_information: this.state.shippingInfo,
+              payment_information: this.state.paymentInfo,
+              shipping_cost: 5,
+              shipping_method: "Sample shipping method",
+              ship_to_same_address: !this.state.showBillingInfo }
 
+    $.ajax({
+      type: "post",
+      url: "/orders",
+      data: {order: order},
+      success: function(data){
+        window.location.href ="/orders/receipt";
+      },
+      failure: function(data){
+        alert("Fail to place order!")
+      }
+    });
   }
 
   toggleShowBillingInfo(e){

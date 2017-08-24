@@ -3,6 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
   has_many :reviews
+  has_many :orders
 
   def self.from_omniauth(auth)
     where(email: auth.info.email).first_or_create do |user|
