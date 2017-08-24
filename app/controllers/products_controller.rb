@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = @klass.page(params[:page] || 1).per(6)
+    @products = @klass.page(params[:page]).per(6)
     if @category = params[:category]
       @products = @products.by_category(@category)
     end

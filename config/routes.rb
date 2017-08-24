@@ -50,7 +50,12 @@ Rails.application.routes.draw do
     resources :products do
       resources :reviews
     end
-    resources :orders
+    resources :orders do
+      member do
+        post :fulfill
+        post :cancel
+      end
+    end
     resources :bundles
     resources :news
   end
