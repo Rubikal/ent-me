@@ -11,8 +11,8 @@ class ProductsController < ApplicationController
   end
 
   def autocomplete
-    products = Product.select(:id, :title).search_by_title(params[:keyward]).with_pg_search_highlight
-    render json: products, status: 200
+    products = Product.search_by_title(params[:term]).with_pg_search_highlight
+    render json: products.map {|p| { id: p.id, title: p.title, image_url: p.image_url, price: p.price } }, status: 200
   end
 
   def index

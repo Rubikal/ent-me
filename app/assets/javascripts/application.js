@@ -19,3 +19,5 @@
 //= require react_ujs
 //= require components
 //= require main
+//= require jquery-ui/widgets/autocomplete
+//= require autocomplete
