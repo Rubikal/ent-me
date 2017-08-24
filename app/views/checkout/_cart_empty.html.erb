@@ -1,0 +1,19 @@
+<div id="banner" class="jumbotron row">
+  <h1>Checkout</h1>
+</div>
+
+<section id="checkout" class="page-section row">
+  <div id="checkout-progress">
+  </div>
+    <div class="col-sm-12 col-md-9">
+    <div id="checkout-page"></div>
+  </div>
+  <div id="cart-totals" class="col-sm-12 col-md-3">
+    <form class="custom" method="post" action="/checkout">
+      <div id="cart-summary">
+      <h4 class="md-bordered-title">Your cart is empty!</h4>
+    <a class="btn btn-primary col-xs-12" href=<%=root_path%> >Continue shopping <span class="fa fa-arrow-right"></span></a>
+  </div>
+    </form>
+  </div>
+</section>

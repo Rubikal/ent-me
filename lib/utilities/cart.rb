@@ -3,13 +3,13 @@ class Cart
     @cart = cart || {}
   end
 
-  def add_product product, count
-    count ||= 1
+  def add_product product, count, set
+    count = count.present? ? count.to_i : 1
 
     if has_item? product
-      cart[product] = item_count(product) + count.to_i
+      cart[product] = set ? count : (item_count(product) + count)
     else
-      cart[product] = count.to_i
+      cart[product] = count
     end
   end
 
@@ -27,10 +27,8 @@ class Cart
     cart
   end
 
-  private
-
-  def count
-    cart.keys.count
+  def empty?
+    cart.keys.length == 0
   end
 
   def total
@@ -39,6 +37,12 @@ class Cart
     products.map do |product|
       product.price * cart[product.id.to_s]
     end.sum.round(2)
+  end
+
+  private
+
+  def count
+    cart.keys.count
   end
 
   def products
@@ -55,10 +59,6 @@ class Cart
 
   def has_item? product
     cart.keys.include? product
-  end
-
-  def empty?
-    cart.keys.length == 0
   end
 
   def item_count product

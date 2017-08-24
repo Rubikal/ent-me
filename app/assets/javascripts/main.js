@@ -11,18 +11,32 @@
       }
     });
 
-    $(document).on('click', '.quantity-selector .minus', function() {
-      var $el = $(this).closest('.quantity-selector').find('.quantity'),
+    $(document).on('click', '.quantity-selector .minus', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      var $el = $(this).siblings('.quantity'),
         q = parseInt($el.val())-1;
       if (q >= 1) {
         $el.val(q);
+
+        if($(this).hasClass("js-cart")){
+          updateCartItem(this, q);
+        }
       }
     });
 
-    $(document).on('click', '.quantity-selector .plus', function() {
-      var $el = $(this).closest('.quantity-selector').find('.quantity'),
+    $(document).on('click', '.quantity-selector .plus', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      var $el = $(this).siblings('.quantity'),
         q = parseInt($el.val())+1;
       $el.val(q);
+
+      if($(this).hasClass("js-cart")){
+        updateCartItem(this, q);
+      }
     });
 
     var winWidth = $(window).width();
@@ -56,7 +70,7 @@
         data: {id: productID, count: count},
         success: function(data){
           $(self).find('.fa-refresh').remove();
-          renderBascket(data);
+          renderCart(data);
         },
         failure: function(data){
           $(self).find('.fa-refresh').remove();
@@ -78,7 +92,7 @@
         url: "/carts/remove",
         data: {id: productID},
         success: function(data){
-          renderBascket(data);
+          renderCart(data);
         },
         failure: function(data){
           alert("Fail to add item to basket!")
@@ -88,17 +102,13 @@
 
     // Load cart data
     loadCart()
-  });
-
-})(jQuery);
-
-
+};
 function loadCart(){
   $.ajax({
     type: "get",
-    url: "/carts",
+    url: "/carts/info",
     success: function(data){
-      renderBascket(data);
+      renderCart(data);
     },
     failure: function(data){
       alert("Fail to load basket data!")
@@ -106,9 +116,33 @@ function loadCart(){
   });
 }
 
-function renderBascket(data){
+function updateCartItem(item, count){
+  var productID = $(item).data("productid");
+
+  $.ajax({
+    type: "post",
+    url: "/carts/add",
+    data: {id: productID, count: count, set: true},
+    success: function(data){
+      renderCart(data);
+    },
+    failure: function(data){
+      alert("Fail to add item to basket!")
+    }
+  });
+}
+
+function renderCart(data){
+  console.log(data);
+  renderMiniBascket(data);
+  renderBascket(data);
+}
+
+function renderMiniBascket(data){
   $(".js-item-count").text([data.count,  " Items"].join(''));
+  $(".js-total-price").text(["$", data.total ].join(''));
   $(".js-subtotal").text(["Subtotal: $", data.total ].join(''));
+
   $(".cart-items").html("");
   if(data.items.length > 0){
     $(".mini-cart-totals").show();
@@ -129,6 +163,48 @@ function renderBascket(data){
     });
   }else{
     $(".mini-cart-totals").hide();
-    $(".cart-items").append('<li class="cart-item">No items in bascket! </li>');
+    $(".cart-items").append('<h6>No items in cart.</h6>');
+  }
+}
+
+function renderBascket(data){
+  if($(".full-cart-items").length === 0){
+    return;
+  }
+
+  $(".js-badge").text(["$", data.total ].join(''));
+  $(".full-cart-items").html("");
+  if(data.items.length > 0){
+    $.each(data.items, function(index, item){
+      item = '<div class="cart-item row">' +
+              '<div class="col-xs-12 col-sm-2">' +
+                '<div class="product-thumb">' +
+                  '<img class="img-responsive" src='+item.image+'>' +
+                '</div>' +
+              '</div>' +
+              '<div class="col-xs-12 col-sm-4 col-lg-5 cart-details">' +
+                '<div class="h4 product-title">' +
+                  '<a href="javascript:;">'+item.title+'</a>' +
+                  '<p><small class="unit-price"> $'+item.price+'</small></p>' +
+                '</div>' +
+              '</div>' +
+              '<div class="col-xs-12 col-sm-3 col-lg-2 cart-details ">' +
+                '<div class="quantity">' +
+                  '<div class="quantity-selector">' +
+                    '<button class="quantity-btn minus btn btn-lg btn-default js-cart" data-productid='+item.id+'><i class="fa fa-minus"></i></button>' +
+                    '<input type="text" class="form-control quantity" value='+item.count+'>' +
+                    '<button class="quantity-btn plus btn btn-lg btn-default js-cart" data-productid='+item.id+'><i class="fa fa-plus"></i></button>' +
+                  '</div>' +
+                '</div>' +
+              '</div>' +
+              '<div class="col-xs-12 col-sm-3 col-lg-3 cart-details">' +
+                '<div class="h4 total-price"> '+item.price+'</div>' +
+                '<a class="remove-item" href="javascript:;" data-productid='+item.id+' ><i class="fa fa-times"></i></a>' +
+              '</div>' +
+            '</div>'
+      $(".full-cart-items").append(item);
+    });
+  }else{
+    $(".full-cart-items").append('<h6>No items in cart.</h6>');
   }
 }

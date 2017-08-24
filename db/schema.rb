@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822165224) do
+ActiveRecord::Schema.define(version: 20170823231142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "billing_informations", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "phone"
+    t.string "address"
+    t.string "city"
+    t.string "postal_code"
+    t.string "country"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_billing_informations_on_order_id"
+  end
 
   create_table "bundle_products", force: :cascade do |t|
     t.bigint "bundle_id"
@@ -29,6 +44,40 @@ ActiveRecord::Schema.define(version: 20170822165224) do
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "order_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_line_items_on_order_id"
+    t.index ["product_id"], name: "index_line_items_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.float "total_price"
+    t.float "shipping_cost"
+    t.string "shipping_method"
+    t.boolean "ship_to_same_address"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "payment_informations", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "account_number"
+    t.string "ccv"
+    t.integer "expiration_date_month"
+    t.integer "expiration_date_year"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_payment_informations_on_order_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -60,6 +109,20 @@ ActiveRecord::Schema.define(version: 20170822165224) do
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_reviews_on_product_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "shipping_informations", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone"
+    t.string "address"
+    t.string "city"
+    t.string "postal_code"
+    t.string "country"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_shipping_informations_on_order_id"
   end
 
   create_table "users", force: :cascade do |t|

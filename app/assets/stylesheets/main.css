@@ -6544,7 +6544,7 @@ select.form-control {
   font-size: 12px;
   font-weight: 300;
   text-transform: uppercase;
-  background-image: url(../img/bg-dropdown-arrow.png);
+  /*background-image: url(../img/bg-dropdown-arrow.png);*/
   background-repeat: no-repeat;
   background-position: 94% 50%;
 }

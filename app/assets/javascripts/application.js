@@ -15,4 +15,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery.rateyo.min
+//= require react
+//= require react_ujs
+//= require components
 //= require main
