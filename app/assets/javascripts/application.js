@@ -26,3 +26,5 @@
 //= require autocomplete
 //= require facebook_share
 //= require perfect-scrollbar
+//= require review
+//= require cart
