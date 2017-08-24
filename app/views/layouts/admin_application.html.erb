@@ -25,6 +25,14 @@
                 </div>
                 <div class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                   <ul class="nav navbar-nav">
+                    <li class="<%= 'active' if controller?('admin/news') %>">
+                      <a href="/admin/news"><i class="fa fa-newspaper-o" aria-hidden="true">&nbsp;</i> News</a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a href="<%= new_admin_news_path %>"><i class="fa fa-plus" aria-hidden="true">&nbsp;</i> Add News</a>
+                        </li>
+                      </ul>
+                    </li>
                     <li class="<%= 'active' if controller?('admin/orders') %>">
                       <a href="/admin/orders"><i class="fa fa-shopping-bag" aria-hidden="true">&nbsp;</i> Orders</a>
                     </li>

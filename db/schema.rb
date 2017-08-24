@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20170824134752) do
     t.string "first_name"
     t.string "last_name"
     t.string "account_number"
-    t.string "cvv"
+    t.string "ccv"
     t.integer "expiration_date_month"
     t.integer "expiration_date_year"
     t.bigint "order_id"

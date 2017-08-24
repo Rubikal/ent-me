@@ -52,5 +52,6 @@ Rails.application.routes.draw do
     end
     resources :orders
     resources :bundles
+    resources :news
   end
 end

@@ -2,7 +2,7 @@
   <li>
     <nav class="vendor-breadcrumb">
       <ol class="cd-breadcrumb narrow triangle custom-icons">
-        <li class="home"><a href="<%= admin_products_path %>"><i class="fa fa-cubes" aria-hidden="true">&nbsp;</i> Products</a></li>
+        <li class="home"><a href="<%= admin_news_index_path %>"><i class="fa fa-cubes" aria-hidden="true">&nbsp;</i> News</a></li>
       </ol>
     </nav>
   </li>
@@ -14,15 +14,15 @@
       <div class="actions">
         <ul class="tab-list">
           <li role="presentation">
-            <a class="tab active" href="/admin/products">All Products</a>
+            <a class="tab active" href="/admin/news">All News</a>
           </li>
         </ul>
       </div>
       <div class="grid-content">
-        <% if @products.count == 0 %>
+        <% if @news.count == 0 %>
           <div class="row">
             <div class="col-md-offset-4 col-md-4 empty-placeholder">
-              There are no products in shop.
+              There are no news in shop.
             </div>
           </div>
         <% else %>
@@ -32,30 +32,26 @@
                 <th></th>
                 <th class="avatar-head"></th>
                 <th>Title</th>
-                <th>Price</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              <% @products.each do |product| %>
+              <% @news.each do |news| %>
                 <tr>
                   <td></td>
                   <td scope="row">
-                    <%= link_to admin_product_path(product), class: 'avatar' do %>
+                    <%= link_to admin_news_path(news), class: 'avatar' do %>
                       <!-- Product thumb -->
-                      <%= image_tag(product.image.thumb.url, size: "60x60", alt: "Avatar") %>
+                      <%= image_tag(news.image.thumb.url, size: "60x60", alt: "Avatar") %>
                     <% end %>
                   </td>
                   <td>
-                    <%= link_to admin_product_path(product) do %>
-                      <%= product.title %>
+                    <%= link_to admin_news_path(news) do %>
+                      <%= news.title %>
                     <% end %>
                   </td>
                   <td>
-                    $<%= product.price %>
-                  </td>
-                  <td>
-                    <%= link_to admin_product_path(product), method: :delete, class: 'danger', data: {confirm: 'Product will be permanently deleted from Shopify store. Are you sure you want to delete?'} do %>
+                    <%= link_to admin_news_path(news), method: :delete, class: 'danger', data: {confirm: 'Product will be permanently deleted from Shopify store. Are you sure you want to delete?'} do %>
                       <i class="fa fa-trash"></i>
                       Remove
                     <% end %>
