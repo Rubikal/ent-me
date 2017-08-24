@@ -1,5 +1,7 @@
 (function(){
   $(document).ready(function() {
+    $('.scroll-perfect').perfectScrollbar();
+
     $("[data-rating]").each(function(){
       var rating = parseFloat($(this).data('rating'));
       $(this).rateYo({

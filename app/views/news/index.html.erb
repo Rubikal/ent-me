@@ -2,18 +2,14 @@
    <h1>News Feed</h1>
 </div>
 <section id="shop" class="page-section row">
-    <div class="container">
+    <div class="list-news scroll-perfect container">
        <div class="list-group">
-         <div class="product-grid">
-            <div id="" class="row" style="position: relative; height: 372.109px;">
-               <% @news.each do |news| %>
-                  <%= render 'news', news: news%>
-               <% end %>
-               <%if @news.count == 0%>
-                  <h2 class="no-items"> No news found! </h2>
-               <%end%>
-            </div>
-         </div>
+         <% @news.each do |news| %>
+            <%= render 'news', news: news%>
+         <% end %>
+         <%if @news.count == 0%>
+            <h2 class="no-items"> No news found! </h2>
+         <%end%>
       </div>
    </div>
    <div class="col-xs-12 col-sm-12">
