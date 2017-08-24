@@ -1,3 +1,11 @@
-<h1><%=news.title%></h1>
-<h1><%=news.description%></h1>
-<img src="<%=news.image_url%>"/>
+<div  class="box-news list-group-item">
+   <div class="container row">
+      <div class="col-md-3 col-sm-12 col-xs-12">
+         <img src="<%=news.image_url%>"  class="img-news img-responsive">
+      </div>
+      <div class="col-md-9 col-sm-12 col-xs-12">
+         <h4 class="txt-news media-heading"><%=news.title%></h4>
+         <p> <%=news.description%> </p>
+      </div>
+   </div>
+</div>

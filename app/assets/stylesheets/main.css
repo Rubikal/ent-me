@@ -7839,3 +7839,18 @@ a.list-group-item.active small {
   color: #aaa;
   margin-top: .5em;
 }
+/*custom style news*/
+.img-news{
+  /*width:300px;*/
+  height:150px;
+}
+.box-news{
+  margin: 10px 0px 10px;
+}
+.box-news:hover{
+  box-shadow: 5px 6px 5px #888888;
+  border-left:4px solid #0c4d6c;
+}
+.txt-news{
+  color:#0c4d6c;
+}
