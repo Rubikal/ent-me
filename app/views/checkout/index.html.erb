@@ -1,7 +1,7 @@
 <%if @cart_empty%>
   <%= render 'cart_empty' %>
 <%else%>
-  <% unless current_user %>
+  <% if current_user %>
     <%= react_component("Checkout", {cartTotal: @cart_total}) %>
   <% else %>
     <%= render 'unauthorized' %>
