@@ -10,6 +10,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def autocomplete
+    products = Product.select(:id, :title).search_by_title(params[:keyward]).with_pg_search_highlight
+    render json: products, status: 200
+  end
+
   def index
     @products = @klass.page(params[:page] || 1).per(6)
     if @category = params[:category]

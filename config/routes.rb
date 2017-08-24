@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show] do
     collection do
+      get 'autocomplete'
       get 'home'
       get 'search'
       get ':type', action: :index, constraints: {type: /#{Product::TYPES.map(&:pluralize).join('|')}/}, as: :type

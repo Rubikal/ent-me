@@ -24,7 +24,10 @@ gem 'turbolinks', '~> 5'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'font-awesome-sass'
 gem 'bootstrap-glyphicons'
-gem "react-rails"
+gem 'react-rails'
+
+# Auto complete
+gem 'pg_search'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
