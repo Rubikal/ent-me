@@ -38,7 +38,7 @@ class Product < ApplicationRecord
       title: self.title,
       price: self.price,
       image_url: self.image.thumb.url,
-      reviews_average: 3
+      reviews_average: self.reviews.average_rating
     }
   end
 end

@@ -6,6 +6,7 @@
          </a>
          <h3 class="product-title">
             <a href=<%=product_path(product)%> > <%= product.title %> </a>
+            <span data-rating="<%= product.reviews.average_rating %>" style="margin: 4px auto;"></span>
          </h3>
          <div class="h4 product-price">
             <span>$<%= product.price %> </span>

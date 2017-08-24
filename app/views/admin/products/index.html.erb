@@ -49,6 +49,7 @@
                   <td>
                     <%= link_to admin_product_path(product) do %>
                       <%= product.title %>
+                      <span data-rating="<%= product.reviews.average_rating %>"></span>
                     <% end %>
                   </td>
                   <td>
