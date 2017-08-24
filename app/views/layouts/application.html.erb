@@ -24,8 +24,11 @@
                </div>
                <div class="navbar-right navbar-utils">
                   <ul class="list-unstyled clearfix">
-                    <%if current_user %>
+                    <%if user_signed_in? %>
                        <li class="hidden-xs">
+                          <%if current_user.admin%>
+                            <%=link_to "Admin", "/admin", class: "btn"%>
+                          <%end%>
                           <%=link_to "Sign out", destroy_user_session_path, method: "DELETE", class: "btn"%>
                        </li>
                     <%else%>

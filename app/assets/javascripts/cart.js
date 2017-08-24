@@ -146,7 +146,7 @@ function renderBascket(data){
                 '</div>' +
               '</div>' +
               '<div class="col-xs-12 col-sm-3 col-lg-3 cart-details">' +
-                '<div class="h4 total-price"> '+item.price+'</div>' +
+                '<div class="h4 total-price"> $'+item.price+'</div>' +
                 '<a class="remove-item" href="javascript:;" data-productid='+item.id+' ><i class="fa fa-times"></i></a>' +
               '</div>' +
             '</div>'

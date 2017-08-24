@@ -7189,10 +7189,12 @@ input[type="password"]:focus + label {
   margin-bottom: 15px;
 }
 .product-holder .product-item {
+  height: 550px;
   padding: 15px;
   background: #fff;
 }
 .product-holder .product-img img {
+  height: 320px;
   margin: 0 auto;
 }
 .product-holder .product-title {
@@ -7854,7 +7856,7 @@ height:150px;
  margin: 10px 0px 10px;
 }
 .box-news:hover{
-box-shadow: 5px 6px 5px #888888;
+/*box-shadow: 5px 6px 5px #888888;*/
 border-left:4px solid #0c4d6c;
 }
 .txt-news{

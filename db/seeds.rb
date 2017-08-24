@@ -1,16 +1,48 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-10.times do
-  product = Product.new.tap do |p|
-    p.name = Faker::Commerce.productName
-    p.price = Faker::Commerce.price
-    p.save!
+if User.count === 0
+  User.new.tap do |user|
+    user.name = Faker::Name.name
+    user.email = "user@entme.com"
+    user.password = "12345678"
+    user.skip_confirmation!
+    user.save!
   end
-  product
+
+  User.new.tap do |user|
+    user.name = Faker::Name.name
+    user.email = "admin@entme.com"
+    user.password = "12345678"
+    user.skip_confirmation!
+    user.admin = true
+    user.save!
+  end
+end
+
+if Product.count == 0
+  [Film, Game, Music].each do |klass|
+    klass.categories.keys.each do |category|
+      10.times do |no|
+        product = klass.new.tap do |p|
+          p.title = Faker::Commerce.product_name
+          p.description = Faker::Lorem.paragraph(2)
+          p.price = Faker::Commerce.price
+          p.category = category
+          p.featured = no < 3
+          p.image = File.open("app/assets/images/#{klass.to_s.downcase}#{no%3 + 1}.jpg")
+          p.save!
+        end
+        product
+      end
+    end
+  end
+end
+
+if News.count == 0
+  20.times do |no|
+    News.new.tap do |news|
+      news.title = Faker::Commerce.product_name
+      news.description = Faker::Lorem.paragraph(2)
+      news.image = File.open("app/assets/images/news#{no%3 + 1}.jpg")
+      news.save!
+    end
+  end
 end
