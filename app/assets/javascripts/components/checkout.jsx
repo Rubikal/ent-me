@@ -143,7 +143,7 @@ class Checkout extends React.Component {
       url: "/orders",
       data: {order: order},
       success: function(data){
-        window.location.href ="/orders/receipt";
+        window.location.href = "/orders/receipt";
       },
       failure: function(data){
         alert("Fail to place order!")

@@ -24,6 +24,8 @@ class ProductsController < ApplicationController
     @product = Product.find params[:id]
     @reviews = @product.reviews.includes(:user)
     @reviews_rating = @reviews.average_rating
+
+    @review = @product.reviews.new if current_user
   end
 
   def search

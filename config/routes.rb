@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       get 'search'
       get ':type', action: :index, constraints: {type: /#{Product::TYPES.map(&:pluralize).join('|')}/}, as: :type
     end
+    resources :reviews, only: :create
   end
   resources :products, path: '/product', only: [:show]
 
