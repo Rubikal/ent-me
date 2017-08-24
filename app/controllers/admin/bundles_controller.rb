@@ -2,7 +2,7 @@ class Admin::BundlesController < ApplicationController
   layout 'admin_application'
 
   def index
-    @bundles = Bundle.all
+    @bundles = Bundle.page(params[:page])
   end
 
   def new
