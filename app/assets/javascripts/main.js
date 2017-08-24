@@ -1,5 +1,15 @@
 (function($){
   $(document).ready(function() {
+    $("[data-rating]").each(function(){
+      var rating = parseFloat($(this).data('rating'));
+      if (rating > 0) {
+        $(this).rateYo({
+          rating: rating,
+          starWidth: '13px',
+          readOnly: $(this).attr('readonly')
+        });
+      }
+    });
 
     $(document).on('click', '.quantity-selector .minus', function() {
       var $el = $(this).closest('.quantity-selector').find('.quantity'),

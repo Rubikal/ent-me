@@ -1,0 +1,60 @@
+<ul class="nav nav-pills sub-nav">
+  <li>
+    <nav class="vendor-breadcrumb">
+      <ol class="cd-breadcrumb narrow triangle custom-icons">
+        <li class="home"><a href="<%= admin_products_path %>"><i class="fa fa-cubes" aria-hidden="true">&nbsp;</i> Products</a></li>
+        <li class="current"><a href="javascript:;"><%= @product.title %></a></li>
+      </ol>
+    </nav>
+  </li>
+</ul>
+
+<div class="form-container container">
+  <div class="grid-card">
+    <div class="actions">
+      <ul class="tab-list">
+        <li role="presentation">
+          <%= link_to @product.title, admin_product_path(@product), class: 'tab' %>
+        </li>
+        <li role="presentation">
+          <a class="tab active" href="javascript:;">Reviews</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="form-content">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Review</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @product.reviews.each do |review| %>
+              <tr>
+                <td>
+                  <span data-rating="<%= review.rating %>" readonly></span>
+                </td>
+                <td>
+                  <%= review.message %>
+                </td>
+                <td>
+                  <%= link_to admin_product_review_path(review), method: :delete, class: 'danger', data: {confirm: 'Are you sure you want to delete review?'} do %>
+                    <i class="fa fa-trash"></i>
+                    Remove
+                  <% end %>
+                </td>
+                <td></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

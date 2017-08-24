@@ -16,6 +16,11 @@
         <li role="presentation">
           <a class="tab active" href="javascript:;"><%= @product.title.blank? ? "New Film" : @product.title %></a>
         </li>
+        <% if @product.persisted? %>
+          <li role="presentation">
+            <%= link_to 'Reviews', admin_product_reviews_path(@product), class: 'tab' %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

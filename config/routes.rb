@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   resources :products, path: '/product', only: [:show]
 
   namespace :admin do
-    resources :products
+    resources :products do
+      resources :reviews
+    end
   end
 end
