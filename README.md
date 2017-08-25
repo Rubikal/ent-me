@@ -47,3 +47,5 @@ other products on the platform with a discounted price.
 trailers, etc…
 * Control the reviews submitted on the elements by deleting them if necessary
 * Ability to mark orders as fulfilled and label them for future references
+
+Copyright (c) 2017, Rubikal.com
