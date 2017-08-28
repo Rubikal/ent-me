@@ -18,6 +18,11 @@ Technologies:
 * jQuery autocomplete
 
 
+ERD:
+
+![ERD](https://raw.githubusercontent.com/instacular/instacular.github.io/master/img/entme.jpg)
+
+
 Run project:
 
 * just run the seed and you should be good to go, 2 users created
